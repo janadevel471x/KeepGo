@@ -1,6 +1,5 @@
 package com.example.keepgo.data
 
-import androidx.compose.runtime.MutableState
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -17,7 +16,7 @@ interface NoteDataBaseDao {
      fun getNotes(): Flow<List<Note>>
 
     @Query("SELECT * from notes_tbl where id=:id")
-    suspend fun getNoteById(id: String) : Note
+    suspend fun getNoteById(id: String): Note
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(note: Note)

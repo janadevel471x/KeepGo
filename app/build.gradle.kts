@@ -1,8 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -71,7 +71,7 @@ dependencies {
 
     //hilt
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     //Room
     implementation(libs.androidx.room.runtime)
@@ -84,8 +84,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
-}
+    // Hilt Navigation Compose
+    implementation (libs.androidx.hilt.navigation.compose)
 
-kapt {
-    correctErrorTypes = true
+    // kotlin so
+    ksp(libs.androidx.room.compiler)
+
+
 }
